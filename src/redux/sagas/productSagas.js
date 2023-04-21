@@ -9,6 +9,8 @@ import {
   setLoader,
 } from "../actions";
 
+const ERR_MESSAGE = "Something went wrong, Please try again later!";
+
 // sagas
 export function* getProductDetailsSaga() {
   try {
@@ -20,7 +22,8 @@ export function* getProductDetailsSaga() {
       yield put(getProductDetailsFailed("Something went wrong!"));
     }
   } catch (err) {
-    yield put(getProductDetailsFailed(err));
+    // err object does not have a proper error message, so assigning constant message.
+    yield put(getProductDetailsFailed(ERR_MESSAGE));
   } finally {
     yield put(setLoader({ getProduct: false }));
   }
@@ -29,11 +32,10 @@ export function* getProductDetailsSaga() {
 export function* updateProductDetailsSaga({ payload }) {
   try {
     yield put(setLoader({ updateProduct: true }));
-    const response = yield call(Product.update, payload);
-    console.log(response);
-    yield put(updateProductDetailsSuccess(response.data));
+    yield call(Product.update, payload);
+    yield put(updateProductDetailsSuccess(true));
   } catch (err) {
-    yield put(updateProductDetailsFailed(err));
+    yield put(updateProductDetailsFailed(ERR_MESSAGE));
   } finally {
     yield put(setLoader({ updateProduct: false }));
   }

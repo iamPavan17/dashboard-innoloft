@@ -5,10 +5,13 @@ const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
-
-  button {
-    align-self: flex-end;
-  }
 `;
 
-export { FormWrapper };
+const FormFooter = styled.div`
+  display: flex;
+  align-self: end;
+  align-items: center;
+  gap: 10px;
+`;
+
+export { FormWrapper, FormFooter };

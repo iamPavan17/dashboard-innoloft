@@ -23,23 +23,26 @@ import HeaderSection from "./HeaderSection";
 export default function ProductView() {
   const dispatch = useDispatch();
   const loadingState = useSelector(({ loading }) => loading);
-  const product = useSelector(({ productData: { data } }) => data);
+  const productData = useSelector(({ productData }) => productData);
 
-  console.log(product);
+  const { data: product, error } = productData;
+
   useEffect(() => {
-    if (!Object.keys(product).length) {
-      dispatch(getProductDetails());
-    }
-  }, [dispatch, product]);
+    dispatch(getProductDetails());
+  }, [dispatch]);
 
   if (loadingState.getProduct) {
     return <Loader height={500} text="getting product info..." />;
   }
 
+  if (error) {
+    return <Text fontWeight="bold">{error}</Text>;
+  }
+
   return (
     <Section>
       <HeaderSection />
-      {Object.keys(product).length ? (
+      {Object.keys(product).length && (
         <>
           {/* Product title/desc and company UI section */}
           <Card>
@@ -120,10 +123,6 @@ export default function ProductView() {
             </OtherInfoSection>
           </Card>
         </>
-      ) : (
-        <Text fontWeight="bold">
-          Please reload the page to load up the product.
-        </Text>
       )}
     </Section>
   );

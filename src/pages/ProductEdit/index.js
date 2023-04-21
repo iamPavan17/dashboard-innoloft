@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Loader from "components/Loader";
 import { Editor } from "react-draft-wysiwyg";
-import { getProductDetails, updateProductDetails } from "redux/actions";
+import { useNavigate } from "react-router-dom";
+import { updateProductDetails, resetError } from "redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, ContentState, convertFromHTML } from "draft-js";
@@ -12,7 +12,7 @@ import Input from "components/Input";
 import StyledButton from "components/Button";
 
 import { Section } from "../styles";
-import { FormWrapper } from "./styles";
+import { FormWrapper, FormFooter } from "./styles";
 import HeaderSection from "../ProductView/HeaderSection";
 
 export default function ProductEdit() {
@@ -20,13 +20,14 @@ export default function ProductEdit() {
   const [descriptionValue, setDiscriptionValue] = useState();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const loadingState = useSelector(({ loading }) => loading);
-  const product = useSelector(({ productData: { data } }) => data);
+  const productData = useSelector(({ productData }) => productData);
+
+  const { data: product, error } = productData;
 
   useEffect(() => {
-    if (!Object.keys(product).length) {
-      dispatch(getProductDetails());
-    } else {
+    if (Object.keys(product).length) {
       setDiscriptionValue(
         EditorState.createWithContent(
           ContentState.createFromBlockArray(
@@ -35,8 +36,16 @@ export default function ProductEdit() {
         )
       );
       setTitleValue(product.name);
+    } else {
+      // redirecting to view page, if there is no product details.
+      navigate("/product/view");
     }
-  }, [dispatch, product]);
+
+    return () => {
+      // Reseting error value on UNMOUNT
+      dispatch(resetError(false));
+    };
+  }, [dispatch, navigate, product]);
 
   const handleDescriptionChange = (value) => {
     setDiscriptionValue(value);
@@ -54,10 +63,6 @@ export default function ProductEdit() {
     dispatch(updateProductDetails(payload));
   };
 
-  if (loadingState.getProduct) {
-    return <Loader height={500} text="getting product info..." />;
-  }
-
   return (
     <Section>
       <HeaderSection isEditPage />
@@ -74,9 +79,18 @@ export default function ProductEdit() {
               options: ["inline", "list", "textAlign", "history"],
             }}
           />
-          <StyledButton variant="secondary" onClick={handleSubmit}>
-            <Text color="#fff">Save</Text>
-          </StyledButton>
+
+          <FormFooter>
+            {error ? <Text color="#ff0000">{error}</Text> : null}
+            <StyledButton
+              variant="secondary"
+              onClick={handleSubmit}
+              disabled={loadingState.updateProduct}
+              isLoading={loadingState.updateProduct}
+            >
+              <Text color="#fff">Save</Text>
+            </StyledButton>
+          </FormFooter>
         </FormWrapper>
       </Card>
     </Section>

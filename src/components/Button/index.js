@@ -16,10 +16,10 @@ const StyledButton = styled.button`
   `}
 `;
 
-export default function Button({ children, variant, ...rest }) {
+export default function Button({ children, variant, isLoading, ...rest }) {
   return (
     <StyledButton variant={variant} {...rest}>
-      {children || "-"}
+      {isLoading ? "Saving..." : children || "-"}
     </StyledButton>
   );
 }

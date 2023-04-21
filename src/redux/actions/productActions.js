@@ -27,6 +27,12 @@ export const updateProductDetails = (payload) => {
   };
 };
 
+export const resetError = () => {
+  return {
+    type: "RESET_ERROR",
+  };
+};
+
 export const updateProductDetailsSuccess = (payload) => {
   return {
     type: "UPDATE_PRODUCT_DETAILS_SUCCESS",
