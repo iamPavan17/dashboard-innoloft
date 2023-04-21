@@ -8,16 +8,19 @@ import { getProductDetails } from "redux/actions";
 
 export default function ProductView() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(({ loading }) => loading.isLoading);
   const product = useSelector(({ productData }) => productData);
-  console.log(product);
 
   useEffect(() => {
     dispatch(getProductDetails());
   }, [dispatch]);
 
+  if (isLoading) {
+    return <Loader height={500} text="getting product info..." />;
+  }
+
   return (
     <Section>
-      <Loader height={500} text="getting model portfolio" />
       <Text>Product view page</Text>
     </Section>
   );

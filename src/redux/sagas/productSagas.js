@@ -1,11 +1,16 @@
 import { call, takeLatest, all, put } from "redux-saga/effects";
 
 import { Product } from "api/Product";
-import { getProductDetailsSuccess, getProductDetailsFailed } from "../actions";
+import {
+  getProductDetailsSuccess,
+  getProductDetailsFailed,
+  setLoader,
+} from "../actions";
 
 // sagas
 export function* getProductDetailsSaga() {
   try {
+    yield put(setLoader(true));
     const response = yield call(Product.get);
     if (response.status === 200) {
       yield put(getProductDetailsSuccess(response.data));
@@ -14,6 +19,8 @@ export function* getProductDetailsSaga() {
     }
   } catch (err) {
     yield put(getProductDetailsFailed(err));
+  } finally {
+    yield put(setLoader(false));
   }
 }
 
