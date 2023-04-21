@@ -3,12 +3,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
   IconButton,
-  Typography,
   Menu,
   Container,
   Avatar,
   Button,
-  Tooltip,
   MenuItem,
 } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -95,7 +93,7 @@ function AppBar() {
               {pages.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                   <StyledLink to={page.urlPath}>
-                    <Typography textAlign="center">{page.label}</Typography>
+                    <Text>{page.label}</Text>
                   </StyledLink>
                 </MenuItem>
               ))}
@@ -118,20 +116,18 @@ function AppBar() {
                     textTransform: "capitalize",
                   }}
                 >
-                  <Text fontSize={1}>{page.label}</Text>
+                  <Text fontSize="body">{page.label}</Text>
                 </Button>
               </StyledLink>
             ))}
           </Box>
           {/* Large screen menu options - END */}
 
-          {/* User profile - START */}
+          {/* User profile options - START */}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={fullName} src={userImg} />
-              </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt={fullName} src={userImg} />
+            </IconButton>
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -150,12 +146,12 @@ function AppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Text>{setting}</Text>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          {/* User profile - END */}
+          {/* User profile options - END */}
         </HeaderWrapper>
       </Container>
     </StyledAppBar>
