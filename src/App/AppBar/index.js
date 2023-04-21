@@ -24,7 +24,7 @@ import {
 const pages = [{ id: 1, urlPath: "/product/view", label: "Product" }];
 const settings = ["Profile"];
 
-function Header() {
+function AppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -150,4 +150,4 @@ function Header() {
     </StyledAppBar>
   );
 }
-export default Header;
+export default AppBar;

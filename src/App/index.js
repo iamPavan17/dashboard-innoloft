@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./Header";
+import AppBar from "./AppBar";
 import Main from "../pages/Main";
 import NotFound from "../pages/NotFound";
 import ProductEdit from "../pages/ProductEdit";
@@ -10,7 +10,7 @@ import { MAIN_ROUTE, PRODUCT_EDIT_ROUTE, PRODUCT_VIEW_ROUTE } from "./routes";
 export default function App() {
   return (
     <>
-      <Header />
+      <AppBar />
       <Routes>
         <Route path={MAIN_ROUTE} element={<Main />} />
         <Route path={PRODUCT_EDIT_ROUTE} element={<ProductEdit />} />
