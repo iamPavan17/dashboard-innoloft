@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
+import Header from "./Header";
 import Main from "../pages/Main";
 import NotFound from "../pages/NotFound";
-import Header from "../containers/Header";
 import ProductEdit from "../pages/ProductEdit";
 import ProductView from "../pages/ProductView";
 import { MAIN_ROUTE, PRODUCT_EDIT_ROUTE, PRODUCT_VIEW_ROUTE } from "./routes";
