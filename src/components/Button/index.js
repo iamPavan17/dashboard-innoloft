@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   ${({ theme, variant }) => `
-    padding: 8px;
+    padding: 8px 10px;
     background: ${theme.text.color[variant]};
     color: white;
     border: none;
