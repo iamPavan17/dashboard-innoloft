@@ -10,11 +10,18 @@ const GMap = (props) => {
     position: "relative",
   };
 
+  const containerStyle = {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+  };
+
   return (
     <Map
       google={props.google}
       zoom={14}
       styles={googleMapStyles}
+      containerStyle={containerStyle}
       style={mapStyles}
       initialCenter={{ lat: props.latitude, lng: props.longitude }}
     >

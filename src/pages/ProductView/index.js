@@ -41,7 +41,7 @@ export default function ProductView() {
         <>
           {/* Product title/desc and company UI section */}
           <Card>
-            <Grid cols="65fr 35fr">
+            <Grid cols="65fr 35fr" className="product-detail-wrapper">
               <ProductDetailWrapper>
                 <img src={product.picture} alt="product img" height="300px" />
                 <Text
@@ -95,8 +95,6 @@ export default function ProductView() {
                 </Text>
                 <VideoWrapper>
                   <iframe
-                    width="715"
-                    height="400"
                     src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                     frameborder="0"
                     title="product video"

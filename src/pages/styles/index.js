@@ -4,6 +4,12 @@ const Section = styled.section`
   max-width: 120rem;
   margin: 0px auto;
   padding: 14px 24px;
+
+  .product-detail-wrapper {
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 const Divider = styled.div`
