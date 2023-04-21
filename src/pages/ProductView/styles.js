@@ -36,7 +36,7 @@ const OtherInfoSection = styled.div`
   padding: 20px;
 
   .chip {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .other-info-wrapper {
