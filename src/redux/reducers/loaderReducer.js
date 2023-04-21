@@ -1,6 +1,7 @@
 const initState = {
   getProduct: false,
   updateProduct: false,
+  getAppConfig: false,
 };
 
 function loaderReducer(state = initState, action) {
