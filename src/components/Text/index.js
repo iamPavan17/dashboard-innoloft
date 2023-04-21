@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { isHexValue } from "../../utils";
 
@@ -72,41 +71,4 @@ Text.defaultProps = {
   textAlign: "initial",
   textTransform: "none",
   display: "block",
-};
-
-Text.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ]).isRequired,
-  color: PropTypes.oneOfType([
-    PropTypes.oneOf(["default", "error", "caption"]),
-    PropTypes.string,
-  ]),
-  fontSize: PropTypes.oneOfType([
-    PropTypes.oneOf(["body", "caption", "title", "h5", "h4", "h3", "h2", "h1"]),
-    PropTypes.number,
-  ]),
-  fontWeight: PropTypes.oneOf(["light", "regular", "bold", "inherit"]),
-  textAlign: PropTypes.oneOf([
-    "left",
-    "right",
-    "center",
-    "justify",
-    "initial",
-    "inherit",
-  ]),
-  textTransform: PropTypes.oneOf([
-    "none",
-    "capitalize",
-    "uppercase",
-    "lowercase",
-    "initial",
-    "inherit",
-  ]),
-  display: PropTypes.oneOf(["inline", "block"]),
-  letterSpacing: PropTypes.number,
-  lineHeight: PropTypes.number,
-  css: PropTypes.array,
 };
