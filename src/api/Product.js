@@ -1,4 +1,4 @@
-import { get, put } from "./config";
+import { get, put } from "./axios.config";
 
 export const Product = {
   get: () => get("product/6781/"),
