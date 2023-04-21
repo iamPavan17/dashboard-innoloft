@@ -16,7 +16,9 @@ export function get(url) {
 
 export function put(url, payload) {
   return defaultInstance
-    .put(url, payload)
+    .put(url, null, {
+      params: payload,
+    })
     .then((response) => response)
     .catch((error) => {
       throw error.response;

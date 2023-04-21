@@ -1,9 +1,11 @@
-import { call, takeLatest, all, put } from "redux-saga/effects";
+import { call, takeLatest, put } from "redux-saga/effects";
 
 import { Product } from "api/Product";
 import {
   getProductDetailsSuccess,
   getProductDetailsFailed,
+  updateProductDetailsSuccess,
+  updateProductDetailsFailed,
   setLoader,
 } from "../actions";
 
@@ -24,18 +26,21 @@ export function* getProductDetailsSaga() {
   }
 }
 
-export function* updateProductDetailsSaga() {
+export function* updateProductDetailsSaga({ payload }) {
   try {
-  } catch (err) {}
+    yield put(setLoader({ updateProduct: true }));
+    const response = yield call(Product.update, payload);
+    console.log(response);
+    yield put(updateProductDetailsSuccess(response.data));
+  } catch (err) {
+    yield put(updateProductDetailsFailed(err));
+  } finally {
+    yield put(setLoader({ updateProduct: false }));
+  }
 }
 
 // sagawatchers
-export function* getProductDetails() {
+export function* productSagas() {
   yield takeLatest("GET_PRODUCT_DETAILS", getProductDetailsSaga);
   yield takeLatest("UPDATE_PRODUCT_DETAILS", updateProductDetailsSaga);
-}
-
-// exporting
-export function* productSagas() {
-  yield all([call(getProductDetails)]);
 }

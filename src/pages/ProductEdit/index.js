@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Loader from "components/Loader";
 import { Editor } from "react-draft-wysiwyg";
-import { getProductDetails } from "redux/actions";
+import { getProductDetails, updateProductDetails } from "redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, ContentState, convertFromHTML } from "draft-js";
@@ -49,15 +49,15 @@ export default function ProductEdit() {
   const handleSubmit = () => {
     const payload = {
       name: titleValue,
-      description: descriptionValue,
+      description: descriptionValue.getCurrentContent().getPlainText(),
     };
+    dispatch(updateProductDetails(payload));
   };
 
   if (loadingState.getProduct) {
     return <Loader height={500} text="getting product info..." />;
   }
 
-  // console.log(value.getCurrentContent().getPlainText());
   return (
     <Section>
       <HeaderSection isEditPage />
