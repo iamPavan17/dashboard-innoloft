@@ -1,6 +1,7 @@
 # Dashboard Innoloft
 
 A simple app to view and update a Product.
+[Demo](https://innoloft-dashboard.netlify.app/)
 
 ## Run Locally
 
