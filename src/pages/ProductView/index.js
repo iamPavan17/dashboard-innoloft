@@ -3,14 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Card from "components/Card";
 import Text from "components/Text";
-import { Section } from "../styles";
 import Loader from "components/Loader";
+import { Section, Divider } from "../styles";
 import { Grid, Flex } from "components/Layout";
 import { getProductDetails } from "redux/actions";
 
-import { ProductDetailWrapper, CompanyWrapper } from "./styles";
 import UserInfo from "./UserInfo";
+import OtherInfo from "./OtherInfo";
 import LocationInfo from "./LocationInfo";
+import {
+  ProductDetailWrapper,
+  CompanyWrapper,
+  VideoWrapper,
+  VideoSection,
+  OtherInfoSection,
+} from "./styles";
 
 export default function ProductView() {
   const dispatch = useDispatch();
@@ -28,6 +35,7 @@ export default function ProductView() {
 
   return (
     <Section>
+      {/* Product title/desc and company UI section */}
       <Card>
         <Grid cols="65fr 35fr">
           <ProductDetailWrapper>
@@ -70,6 +78,42 @@ export default function ProductView() {
             </Flex>
           </CompanyWrapper>
         </Grid>
+      </Card>
+
+      <Divider />
+
+      {/* Video section */}
+      <Card>
+        <VideoSection>
+          <Flex flexDirection="column">
+            <Text fontWeight="bold" fontSize="title" color="primary">
+              Video
+            </Text>
+            <VideoWrapper>
+              <iframe
+                width="715"
+                height="400"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                frameborder="0"
+                title="product video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </VideoWrapper>
+          </Flex>
+        </VideoSection>
+      </Card>
+
+      <Divider />
+
+      {/* Other product info section */}
+      <Card>
+        <OtherInfoSection>
+          <Text fontWeight="bold" fontSize="title" color="primary">
+            Offer details
+          </Text>
+          <OtherInfo product={product} />
+        </OtherInfoSection>
       </Card>
     </Section>
   );

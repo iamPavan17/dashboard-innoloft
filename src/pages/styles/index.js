@@ -6,9 +6,13 @@ const Section = styled.section`
   padding: 14px 24px;
 `;
 
+const Divider = styled.div`
+  padding: 10px 0px;
+`;
+
 // const spacing = css`
 //   padding-top: 7.4rem;
 //   padding-bottom: 4.4rem;
 // `;
 
-export { Section };
+export { Section, Divider };

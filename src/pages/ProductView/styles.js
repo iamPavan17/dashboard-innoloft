@@ -23,4 +23,31 @@ const CompanyWrapper = styled.div`
   }
 `;
 
-export { ProductDetailWrapper, CompanyWrapper };
+const VideoWrapper = styled.div`
+  margin-top: 20px;
+  align-self: center;
+`;
+
+const VideoSection = styled.div`
+  padding: 20px;
+`;
+
+const OtherInfoSection = styled.div`
+  padding: 20px;
+
+  .chip {
+    font-size: 14px;
+  }
+
+  .other-info-wrapper {
+    margin-top: 20px;
+  }
+`;
+
+export {
+  ProductDetailWrapper,
+  CompanyWrapper,
+  VideoWrapper,
+  VideoSection,
+  OtherInfoSection,
+};
