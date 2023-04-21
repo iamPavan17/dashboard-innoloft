@@ -98,9 +98,8 @@ function AppBar() {
           {/* Large screen menu options - START */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <StyledLink to={page.urlPath}>
+              <StyledLink to={page.urlPath} key={page.id}>
                 <Button
-                  key={page.id}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
