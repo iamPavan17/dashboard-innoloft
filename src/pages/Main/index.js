@@ -4,7 +4,9 @@ import { Section } from "../styles";
 export default function Main() {
   return (
     <Section>
-      <Text>Hello 👋🏼, This is a Main Page.</Text>
+      <Text textAlign="center" fontWeight="bold" fontSize="h1">
+        Hello 👋🏼, This is a Main Page.
+      </Text>
     </Section>
   );
 }
