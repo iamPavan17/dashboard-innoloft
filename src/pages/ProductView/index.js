@@ -22,7 +22,7 @@ import HeaderSection from "./HeaderSection";
 
 export default function ProductView() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(({ loading }) => loading.isLoading);
+  const loadingState = useSelector(({ loading }) => loading);
   const product = useSelector(({ productData: { data } }) => data);
 
   console.log(product);
@@ -32,7 +32,7 @@ export default function ProductView() {
     }
   }, [dispatch, product]);
 
-  if (isLoading) {
+  if (loadingState.getProduct) {
     return <Loader height={500} text="getting product info..." />;
   }
 

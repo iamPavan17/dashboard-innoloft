@@ -1,5 +1,6 @@
 const initState = {
-  isLoading: false,
+  getProduct: false,
+  updateProduct: false,
 };
 
 function loaderReducer(state = initState, action) {
@@ -7,7 +8,7 @@ function loaderReducer(state = initState, action) {
     case "SET_LOADER": {
       return {
         ...state,
-        isLoading: action.payload,
+        ...action.payload,
       };
     }
 

@@ -20,7 +20,7 @@ export default function ProductEdit() {
   const [descriptionValue, setDiscriptionValue] = useState();
 
   const dispatch = useDispatch();
-  const isLoading = useSelector(({ loading }) => loading.isLoading);
+  const loadingState = useSelector(({ loading }) => loading);
   const product = useSelector(({ productData: { data } }) => data);
 
   useEffect(() => {
@@ -46,7 +46,14 @@ export default function ProductEdit() {
     setTitleValue(e.target.value);
   };
 
-  if (isLoading) {
+  const handleSubmit = () => {
+    const payload = {
+      name: titleValue,
+      description: descriptionValue,
+    };
+  };
+
+  if (loadingState.getProduct) {
     return <Loader height={500} text="getting product info..." />;
   }
 
@@ -63,8 +70,11 @@ export default function ProductEdit() {
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName"
             onEditorStateChange={handleDescriptionChange}
+            toolbar={{
+              options: ["inline", "list", "textAlign", "history"],
+            }}
           />
-          <StyledButton variant="secondary">
+          <StyledButton variant="secondary" onClick={handleSubmit}>
             <Text color="#fff">Save</Text>
           </StyledButton>
         </FormWrapper>

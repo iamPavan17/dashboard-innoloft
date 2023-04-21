@@ -10,7 +10,7 @@ import {
 // sagas
 export function* getProductDetailsSaga() {
   try {
-    yield put(setLoader(true));
+    yield put(setLoader({ getProduct: true }));
     const response = yield call(Product.get);
     if (response.status === 200) {
       yield put(getProductDetailsSuccess(response.data));
@@ -20,13 +20,19 @@ export function* getProductDetailsSaga() {
   } catch (err) {
     yield put(getProductDetailsFailed(err));
   } finally {
-    yield put(setLoader(false));
+    yield put(setLoader({ getProduct: false }));
   }
+}
+
+export function* updateProductDetailsSaga() {
+  try {
+  } catch (err) {}
 }
 
 // sagawatchers
 export function* getProductDetails() {
   yield takeLatest("GET_PRODUCT_DETAILS", getProductDetailsSaga);
+  yield takeLatest("UPDATE_PRODUCT_DETAILS", updateProductDetailsSaga);
 }
 
 // exporting

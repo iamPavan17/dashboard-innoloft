@@ -19,3 +19,24 @@ export const getProductDetailsFailed = (payload) => {
     payload,
   };
 };
+
+export const updateProductDetails = (payload) => {
+  return {
+    type: "UPDATE_PRODUCT_DETAILS",
+    payload,
+  };
+};
+
+export const updateProductDetailsSuccess = (payload) => {
+  return {
+    type: "UPDATE_PRODUCT_DETAILS_SUCCESS",
+    payload,
+  };
+};
+
+export const updateProductDetailsFailed = (payload) => {
+  return {
+    type: "UPDATE_PRODUCT_DETAILS_FAILED",
+    payload,
+  };
+};
