@@ -27,8 +27,10 @@ export default function ProductView() {
 
   console.log(product);
   useEffect(() => {
-    dispatch(getProductDetails());
-  }, [dispatch]);
+    if (!Object.keys(product).length) {
+      dispatch(getProductDetails());
+    }
+  }, [dispatch, product]);
 
   if (isLoading) {
     return <Loader height={500} text="getting product info..." />;

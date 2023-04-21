@@ -10,6 +10,12 @@ const Section = styled.section`
       grid-template-columns: 1fr;
     }
   }
+
+  // WYSIWYG editor styles
+  .wrapperClassName {
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+  }
 `;
 
 const Divider = styled.div`

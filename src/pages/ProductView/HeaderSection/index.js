@@ -28,7 +28,7 @@ export default function HeaderSection({ isEditPage }) {
         ) : (
           <Breadcrumb />
         )}
-        <StyledButton onClick={() => console.log("CLICED")} variant="primary">
+        <StyledButton variant="primary">
           <Link to={btnLink}>
             <Text color="#fff">{btnText}</Text>
           </Link>
