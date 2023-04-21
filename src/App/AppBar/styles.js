@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 
 const LargeScreenLogo = styled.img`
-  margin-right: 18px;
+  margin-right: 24px;
   @media (max-width: 900px) {
     display: none;
   }

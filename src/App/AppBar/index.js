@@ -11,7 +11,9 @@ import {
   Tooltip,
   MenuItem,
 } from "@mui/material";
+import { useSelector } from "react-redux";
 
+import Text from "components/Text";
 import LogoIcon from "./assets/logo.svg";
 import {
   LargeScreenLogo,
@@ -28,6 +30,8 @@ const pages = [
 const settings = ["Profile"];
 
 function AppBar() {
+  const user = useSelector(({ productData: { data } }) => data.user);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,6 +49,12 @@ function AppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  let fullName, userImg;
+  if (user) {
+    fullName = `${user.firstName} ${user.lastName}`;
+    userImg = user.profilePicture;
+  }
 
   return (
     <StyledAppBar position="static">
@@ -101,9 +111,14 @@ function AppBar() {
               <StyledLink to={page.urlPath} key={page.id}>
                 <Button
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "capitalize",
+                  }}
                 >
-                  {page.label}
+                  <Text fontSize={1}>{page.label}</Text>
                 </Button>
               </StyledLink>
             ))}
@@ -114,7 +129,7 @@ function AppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={fullName} src={userImg} />
               </IconButton>
             </Tooltip>
             <Menu
