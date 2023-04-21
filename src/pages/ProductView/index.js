@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Section } from "../styles";
 import Text from "components/Text";
+import { Section } from "../styles";
+import Loader from "components/Loader";
 import { getProductDetails } from "redux/actions";
 
 export default function ProductView() {
@@ -16,6 +17,7 @@ export default function ProductView() {
 
   return (
     <Section>
+      <Loader height={500} text="getting model portfolio" />
       <Text>Product view page</Text>
     </Section>
   );

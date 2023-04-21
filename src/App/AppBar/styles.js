@@ -23,7 +23,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const StyledAppBar = styled(AppBar)`
-  background-color: #272e71 !important;
+  background-color: ${(props) => props.theme.text.color.primary} !important;
 `;
 
 const StyledLink = styled(Link)`

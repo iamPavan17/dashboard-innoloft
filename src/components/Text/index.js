@@ -1,5 +1,5 @@
+import { isHexValue } from "utils";
 import styled from "styled-components";
-import { isHexValue } from "../../utils";
 
 const StyledText = styled.p`
   ${({
