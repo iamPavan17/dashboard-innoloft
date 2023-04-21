@@ -18,6 +18,7 @@ import {
   VideoSection,
   OtherInfoSection,
 } from "./styles";
+import HeaderSection from "./HeaderSection";
 
 export default function ProductView() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export default function ProductView() {
 
   return (
     <Section>
+      <HeaderSection />
       {Object.keys(product).length ? (
         <>
           {/* Product title/desc and company UI section */}
