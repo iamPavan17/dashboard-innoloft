@@ -24,7 +24,7 @@ export default function ProductEdit() {
   const loadingState = useSelector(({ loading }) => loading);
   const productData = useSelector(({ productData }) => productData);
 
-  const { data: product, error } = productData;
+  const { data: product, updateSuccess, updateFailure } = productData;
 
   useEffect(() => {
     if (Object.keys(product).length) {
@@ -46,6 +46,10 @@ export default function ProductEdit() {
       dispatch(resetError(false));
     };
   }, [dispatch, navigate, product]);
+
+  useEffect(() => {
+    if (updateSuccess) navigate("/product/view");
+  }, [navigate, updateSuccess]);
 
   const handleDescriptionChange = (value) => {
     setDiscriptionValue(value);
@@ -81,7 +85,11 @@ export default function ProductEdit() {
           />
 
           <FormFooter>
-            {error ? <Text color="#ff0000">{error}</Text> : null}
+            {updateFailure ? (
+              <Text color="#ff0000">
+                Something went wrong, Please try again later!
+              </Text>
+            ) : null}
             <StyledButton
               variant="secondary"
               onClick={handleSubmit}

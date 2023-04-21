@@ -33,16 +33,14 @@ export const resetError = () => {
   };
 };
 
-export const updateProductDetailsSuccess = (payload) => {
+export const updateProductDetailsSuccess = () => {
   return {
     type: "UPDATE_PRODUCT_DETAILS_SUCCESS",
-    payload,
   };
 };
 
-export const updateProductDetailsFailed = (payload) => {
+export const updateProductDetailsFailed = () => {
   return {
     type: "UPDATE_PRODUCT_DETAILS_FAILED",
-    payload,
   };
 };

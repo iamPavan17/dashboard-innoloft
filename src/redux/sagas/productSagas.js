@@ -33,9 +33,9 @@ export function* updateProductDetailsSaga({ payload }) {
   try {
     yield put(setLoader({ updateProduct: true }));
     yield call(Product.update, payload);
-    yield put(updateProductDetailsSuccess(true));
+    yield put(updateProductDetailsSuccess());
   } catch (err) {
-    yield put(updateProductDetailsFailed(ERR_MESSAGE));
+    yield put(updateProductDetailsFailed());
   } finally {
     yield put(setLoader({ updateProduct: false }));
   }

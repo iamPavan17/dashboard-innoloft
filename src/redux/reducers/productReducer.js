@@ -1,6 +1,8 @@
 const initState = {
   data: {},
   error: null,
+  updateSuccess: false,
+  updateFailure: false,
 };
 
 function productReducer(state = initState, action) {
@@ -22,19 +24,23 @@ function productReducer(state = initState, action) {
     case "UPDATE_PRODUCT_DETAILS_SUCCESS": {
       return {
         ...state,
-        error: null,
+        updateSuccess: true,
+        updateFailure: false,
       };
     }
     case "UPDATE_PRODUCT_DETAILS_FAILED": {
       return {
         ...state,
-        error: action.payload,
+        updateSuccess: false,
+        updateFailure: true,
       };
     }
     case "RESET_ERROR": {
       return {
         ...state,
         error: null,
+        updateSuccess: false,
+        updateFailure: false,
       };
     }
     default:
