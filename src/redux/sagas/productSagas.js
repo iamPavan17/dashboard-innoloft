@@ -1,10 +1,20 @@
-import { call, takeLatest, all } from "redux-saga/effects";
+import { call, takeLatest, all, put } from "redux-saga/effects";
+
+import { Product } from "api/Product";
+import { getProductDetailsSuccess, getProductDetailsFailed } from "../actions";
 
 // sagas
 export function* getProductDetailsSaga() {
-  console.log("getProductDetailsSaga");
-  //   yield call(createUserCollection, u.user.uid, formData);
-  //   yield put({ type: "LOGIN_SUCCESS" });
+  try {
+    const response = yield call(Product.get);
+    if (response.status === 200) {
+      yield put(getProductDetailsSuccess(response.data));
+    } else {
+      yield put(getProductDetailsFailed("Something went wrong!"));
+    }
+  } catch (err) {
+    yield put(getProductDetailsFailed(err));
+  }
 }
 
 // sagawatchers
