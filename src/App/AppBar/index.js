@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
@@ -19,9 +18,13 @@ import {
   SmallScreenLogo,
   HeaderWrapper,
   StyledAppBar,
+  StyledLink,
 } from "./styles";
 
-const pages = [{ id: 1, urlPath: "/product/view", label: "Product" }];
+const pages = [
+  { id: 1, urlPath: "/", label: "Main" },
+  { id: 2, urlPath: "/product/view", label: "Product" },
+];
 const settings = ["Profile"];
 
 function AppBar() {
@@ -47,13 +50,7 @@ function AppBar() {
     <StyledAppBar position="static">
       <Container maxWidth="xl">
         <HeaderWrapper disableGutters>
-          <Link to="/">
-            <LargeScreenLogo
-              src={LogoIcon}
-              alt="large logo img"
-              width="140px"
-            />
-          </Link>
+          <LargeScreenLogo src={LogoIcon} alt="large logo img" width="140px" />
 
           {/* Small screen menu - START */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
@@ -87,9 +84,9 @@ function AppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Link to={page.urlPath}>
+                  <StyledLink to={page.urlPath}>
                     <Typography textAlign="center">{page.label}</Typography>
-                  </Link>
+                  </StyledLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -101,7 +98,7 @@ function AppBar() {
           {/* Large screen menu options - START */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page.urlPath}>
+              <StyledLink to={page.urlPath}>
                 <Button
                   key={page.id}
                   onClick={handleCloseNavMenu}
@@ -109,7 +106,7 @@ function AppBar() {
                 >
                   {page.label}
                 </Button>
-              </Link>
+              </StyledLink>
             ))}
           </Box>
           {/* Large screen menu options - END */}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 
 const LargeScreenLogo = styled.img`
@@ -25,4 +26,14 @@ const StyledAppBar = styled(AppBar)`
   background-color: #272e71 !important;
 `;
 
-export { LargeScreenLogo, SmallScreenLogo, HeaderWrapper, StyledAppBar };
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export {
+  LargeScreenLogo,
+  SmallScreenLogo,
+  HeaderWrapper,
+  StyledAppBar,
+  StyledLink,
+};
