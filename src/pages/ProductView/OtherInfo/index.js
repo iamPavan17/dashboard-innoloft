@@ -30,7 +30,7 @@ export default function OtherInfo({ product }) {
       options: getOptions(product, "investmentEffort"),
     },
   ];
-  console.log(offerDetailsData);
+
   return (
     <Grid className="other-info-wrapper" container spacing={2}>
       {offerDetailsData.map((item) => (
