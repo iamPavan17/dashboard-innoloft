@@ -6,7 +6,7 @@ import Text from "components/Text";
 import Loader from "components/Loader";
 import { Section, Divider } from "../styles";
 import { Grid, Flex } from "components/Layout";
-import { getProductDetails } from "redux/actions";
+import { getProductDetails, getAppConfig } from "redux/actions";
 
 import UserInfo from "./UserInfo";
 import OtherInfo from "./OtherInfo";
@@ -24,15 +24,24 @@ export default function ProductView() {
   const dispatch = useDispatch();
   const loadingState = useSelector(({ loading }) => loading);
   const productData = useSelector(({ productData }) => productData);
+  const appConfigData = useSelector(({ appConfig }) => appConfig);
 
   const { data: product, error } = productData;
+  const { data: appConfig } = appConfigData;
 
   useEffect(() => {
+    dispatch(getAppConfig());
     dispatch(getProductDetails());
   }, [dispatch]);
 
-  if (loadingState.getProduct) {
-    return <Loader height={500} text="getting product info..." />;
+  if (loadingState.getProduct || loadingState.getAppConfig) {
+    const { getProduct, getAppConfig } = loadingState;
+    const loadingText = getProduct
+      ? "product"
+      : getAppConfig
+      ? "app configuration"
+      : "";
+    return <Loader height={500} text={`getting ${loadingText} info...`} />;
   }
 
   if (error) {
@@ -82,7 +91,9 @@ export default function ProductView() {
                     height="46px"
                     width="240px"
                   />
-                  <UserInfo user={product.user} className="user-info" />
+                  {appConfig.hasUserSection && (
+                    <UserInfo user={product.user} className="user-info" />
+                  )}
                   <LocationInfo location={product.company?.address} />
                 </Flex>
               </CompanyWrapper>
