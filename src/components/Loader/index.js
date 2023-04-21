@@ -26,7 +26,7 @@ function Loader({ type, height, text, size }) {
           height={size}
         />
         {text && (
-          <Text fontSize={1} fontWeight="light">
+          <Text fontSize={"body"} fontWeight="light">
             {text}
           </Text>
         )}

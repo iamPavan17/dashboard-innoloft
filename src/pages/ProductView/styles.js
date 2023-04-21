@@ -12,6 +12,15 @@ const ProductDetailWrapper = styled.div`
 
 const CompanyWrapper = styled.div`
   border-left: 1px solid #e5e7eb;
+  padding: 20px;
+
+  .company-title {
+    margin-bottom: 12px;
+  }
+
+  .user-info {
+    margin-bottom: 18px;
+  }
 `;
 
 export { ProductDetailWrapper, CompanyWrapper };

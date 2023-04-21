@@ -5,10 +5,12 @@ import Card from "components/Card";
 import Text from "components/Text";
 import { Section } from "../styles";
 import Loader from "components/Loader";
-import { Grid } from "components/Layout";
+import { Grid, Flex } from "components/Layout";
 import { getProductDetails } from "redux/actions";
 
 import { ProductDetailWrapper, CompanyWrapper } from "./styles";
+import UserInfo from "./UserInfo";
+import LocationInfo from "./LocationInfo";
 
 export default function ProductView() {
   const dispatch = useDispatch();
@@ -47,7 +49,26 @@ export default function ProductView() {
               {product.description}
             </Text>
           </ProductDetailWrapper>
-          <CompanyWrapper>wef</CompanyWrapper>
+          <CompanyWrapper>
+            <Flex flexDirection="column" gap="10px">
+              <Text
+                className="company-title"
+                fontWeight="bold"
+                color="primary"
+                fontSize="title"
+              >
+                Offered by
+              </Text>
+              <img
+                src={product.company?.logo}
+                alt="company logo"
+                height="46px"
+                width="240px"
+              />
+              <UserInfo user={product.user} className="user-info" />
+              <LocationInfo location={product.company?.address} />
+            </Flex>
+          </CompanyWrapper>
         </Grid>
       </Card>
     </Section>
