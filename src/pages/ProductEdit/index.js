@@ -1,5 +1,10 @@
-import React from "react";
+import Text from "components/Text";
+import { Section } from "../styles";
 
 export default function ProductEdit() {
-  return <div>ProductEdit</div>;
+  return (
+    <Section>
+      <Text>Product edit page</Text>
+    </Section>
+  );
 }

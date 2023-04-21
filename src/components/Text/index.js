@@ -33,7 +33,7 @@ const StyledText = styled.p`
  * themed Text component
  *** css - For additional stylings
  */
-export function Text({
+export default function Text({
   children,
   color,
   fontSize,

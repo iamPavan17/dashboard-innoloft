@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
 import AppBar from "./AppBar";
-import Main from "../pages/Main";
-import NotFound from "../pages/NotFound";
-import ProductEdit from "../pages/ProductEdit";
-import ProductView from "../pages/ProductView";
+import Main from "pages/Main";
+import NotFound from "pages/NotFound";
+import ProductEdit from "pages/ProductEdit";
+import ProductView from "pages/ProductView";
 import { MAIN_ROUTE, PRODUCT_EDIT_ROUTE, PRODUCT_VIEW_ROUTE } from "./routes";
 
 export default function App() {

@@ -1,17 +1,18 @@
 import { call, takeLatest, all } from "redux-saga/effects";
 
 // sagas
-export function* createUser({ formData }) {
+export function* getProductDetailsSaga() {
+  console.log("getProductDetailsSaga");
   //   yield call(createUserCollection, u.user.uid, formData);
   //   yield put({ type: "LOGIN_SUCCESS" });
 }
 
 // sagawatchers
-export function* onCreateUser() {
-  yield takeLatest("CREATE_USER_START", createUser);
+export function* getProductDetails() {
+  yield takeLatest("GET_PRODUCT_DETAILS", getProductDetailsSaga);
 }
 
 // exporting
 export function* productSagas() {
-  yield all([call(onCreateUser)]);
+  yield all([call(getProductDetails)]);
 }
